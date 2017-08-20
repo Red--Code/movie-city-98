@@ -1,0 +1,12 @@
+bot.hears('Your Name', (ctx) => {	
+	ctx.replyWithPhoto('http://www.film2movie.co/content/uploads/Your-Name-2016.jpg')
+	return ctx.reply('Your name 2016  دانلود رایگان\n\n@CIT_tech',
+    Markup.inlineKeyboard([
+		[Markup.urlButton('Download  480p', 'http://dl4.film2movie.co/film/Your.Name.2016.480p.BluRay.Film2Movie_CO.mkv')],
+	[Markup.urlButton('ِِِِِِِDownload  720p', 'http://dl4.film2movie.co/film/Your.Name.2016.720p.BluRay.MkvCage.Film2Movie_CO.mkv')],
+	[Markup.urlButton('Download  1080p', 'http://dl4.film2movie.co/film/Your.Name.2016.1080p.BluRay.Film2Movie_CO.mkv')],
+	[Markup.urlButton('Download  720p x265', 'http://dl4.film2movie.co/film/Your.Name.2016.720p.BluRay.x265.HEVC.Film2Movie_CO.mkv')],
+	[Markup.urlButton('زیرنویس', 'http://subf2m.co/subtitles/kimi-no-na-wa-your-name')]
+    ]).extra()
+)
+})

@@ -1,0 +1,92 @@
+warning: LF will be replaced by CRLF in package.json.
+The file will have its original line endings in your working directory.
+[1mdiff --git a/examples/custom-router-bot.js b/examples/custom-router-bot.js[m
+[1mindex 913611f..cfb5fe9 100644[m
+[1m--- a/examples/custom-router-bot.js[m
+[1m+++ b/examples/custom-router-bot.js[m
+[36m@@ -1,22 +1,17 @@[m
+ const Telegraf = require('../')[m
+ const { Router, Extra, memorySession } = require('../')[m
+[31m-[m
+[32m+[m[32mconst { Markup } = require('../')[m
+ const defaultMarkup = Extra[m
+   .HTML()[m
+   .markup((m) => m.inlineKeyboard([[m
+[31m-    m.callbackButton('Add 1', 'add:1'),[m
+[31m-    m.callbackButton('Add 10', 'add:10'),[m
+[31m-    m.callbackButton('Add 100', 'add:100'),[m
+[31m-    m.callbackButton('Subtract 1', 'sub:1'),[m
+[31m-    m.callbackButton('Subtract 10', 'sub:10'),[m
+[31m-    m.callbackButton('Subtract 100', 'sub:100'),[m
+[31m-    m.callbackButton('Clear', 'clear')[m
+[31m-  ], {columns: 3}))[m
+[32m+[m[32m    m.callbackButton('Like', 'add:1'),[m
+[32m+[m	[32mm.urlButton('DOWNLOAD', 'http://uploadboy.me/ceoxn303qujr/Alien.Covenant.2017.720p.BluRay.x265.HEVC.mkv.html')[m
+[32m+[m[32m  ], {columns: 2}))[m
+ [m
+ const simpleRouter = new Router((ctx) => {[m
+   if (!ctx.callbackQuery.data) {[m
+     return Promise.resolve()[m
+[31m-  }[m
+[32m+[m[32m  }[m[41m	[m
+   const parts = ctx.callbackQuery.data.split(':')[m
+   return Promise.resolve({[m
+     route: parts[0],[m
+[36m@@ -26,13 +21,14 @@[m [mconst simpleRouter = new Router((ctx) => {[m
+   })[m
+ })[m
+ [m
+[31m-const bot = new Telegraf(process.env.BOT_TOKEN)[m
+[32m+[m[32mconst bot = new Telegraf('416337659:AAEPtdYATok1xrssZBirHVNwkoHETi-3RVQ')[m
+ bot.use(memorySession())[m
+ bot.on('callback_query', simpleRouter.middleware())[m
+ [m
+ bot.command('start', (ctx) => {[m
+[31m-  ctx.session.value = 0[m
+[31m-  return ctx.reply(`Value: <b>${ctx.session.value}</b>`, defaultMarkup)[m
+[32m+[m[32m  ctx.session.value = 0,[m
+[32m+[m[32m  ctx.replyWithPhoto('http://www.film2movie.co/content/uploads/Alien_Covenant.jpg')[m
+[32m+[m[32m  return ctx.reply(`Alien Covenant\n\n@CIT_tech\n\nLikes: <b>${ctx.session.value}</b>`, defaultMarkup)[m
+ })[m
+ [m
+ simpleRouter.on('add', (ctx) => {[m
+[36m@@ -54,6 +50,6 @@[m [mbot.startPolling()[m
+ [m
+ function editText (ctx) {[m
+   return ctx.session.value !== 42[m
+[31m-    ? ctx.editMessageText(`Value: <b>${ctx.session.value}</b>`, defaultMarkup).catch(() => undefined)[m
+[32m+[m[32m    ? ctx.editMessageText(`Alien Covenant\n\n@CIT_tech\n\nLikes: <b>${ctx.session.value}</b>`, defaultMarkup).catch(() => undefined)[m
+     : ctx.answerCallbackQuery('🎉', undefined, true).then(() => ctx.editMessageText(`🎉 ${ctx.session.value} 🎉`))[m
+ }[m
+[1mdiff --git a/examples/echo-bot.js b/examples/echo-bot.js[m
+[1mindex 8b25dae..0f67425 100644[m
+[1m--- a/examples/echo-bot.js[m
+[1m+++ b/examples/echo-bot.js[m
+[36m@@ -2,11 +2,11 @@[m [mconst Telegraf = require('../')[m
+ const { Markup } = require('../')[m
+ [m
+ const replyOptions = Markup.inlineKeyboard([[m
+[31m-  Markup.urlButton('❤️', 'http://telegraf.js.org'),[m
+[32m+[m[32m  Markup.urlButton('kl', 'http://telegraf.js.org'),[m
+   Markup.callbackButton('Delele', 'delete')[m
+ ]).extra()[m
+ [m
+[31m-const bot = new Telegraf(process.env.BOT_TOKEN)[m
+[32m+[m[32mconst bot = new Telegraf('380462411:AAGoitvqD9gLdDx5pjamI489VHShrAzkEsc')[m
+ bot.on('message', (ctx) => ctx.telegram.sendCopy(ctx.from.id, ctx.message, replyOptions))[m
+ bot.action('delete', ({ deleteMessage }) => deleteMessage())[m
+ bot.startPolling()[m
+[1mdiff --git a/examples/example-bot.js b/examples/example-bot.js[m
+[1mindex 6dd4dab..50abd6a 100644[m
+[1m--- a/examples/example-bot.js[m
+[1m+++ b/examples/example-bot.js[m
+[36m@@ -1,7 +1,7 @@[m
+ const Telegraf = require('../')[m
+ const { Extra, memorySession, reply } = require('../')[m
+ [m
+[31m-const bot = new Telegraf(process.env.BOT_TOKEN)[m
+[32m+[m[32mconst bot = new Telegraf('416337659:AAEPtdYATok1xrssZBirHVNwkoHETi-3RVQ')[m
+ [m
+ bot.use(memorySession())[m
+ [m
+[1mdiff --git a/examples/game-bot.js b/examples/game-bot.js[m

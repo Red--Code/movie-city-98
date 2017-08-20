@@ -1,0 +1,8 @@
+﻿bot.hears('alien covenant', (ctx) => {	
+	ctx.replyWithPhoto('http://www.film2movie.co/content/uploads/Alien_Covenant.jpg')
+	return ctx.reply('Alien Covenant   دانلود رایگان\n\n@CIT_tech',
+    Markup.inlineKeyboard([
+	Markup.urlButton('Download 720p x265', 'http://uploadboy.me/ceoxn303qujr/Alien.Covenant.2017.720p.BluRay.x265.HEVC.mkv.html')
+    ]).extra()
+)
+})
